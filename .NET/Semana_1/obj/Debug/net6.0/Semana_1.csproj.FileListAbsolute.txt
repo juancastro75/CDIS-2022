@@ -1,0 +1,15 @@
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\bin\Debug\net6.0\Semana_1.exe
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\bin\Debug\net6.0\Semana_1.deps.json
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\bin\Debug\net6.0\Semana_1.runtimeconfig.json
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\bin\Debug\net6.0\Semana_1.dll
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\bin\Debug\net6.0\Semana_1.pdb
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\obj\Debug\net6.0\Semana_1.csproj.AssemblyReference.cache
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\obj\Debug\net6.0\Semana_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\obj\Debug\net6.0\Semana_1.AssemblyInfoInputs.cache
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\obj\Debug\net6.0\Semana_1.AssemblyInfo.cs
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\obj\Debug\net6.0\Semana_1.csproj.CoreCompileInputs.cache
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\obj\Debug\net6.0\Semana_1.dll
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\obj\Debug\net6.0\refint\Semana_1.dll
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\obj\Debug\net6.0\Semana_1.pdb
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\obj\Debug\net6.0\Semana_1.genruntimeconfig.cache
+C:\Users\juanc\OneDrive\Documentos\CDIS 2022\.NET\Semana_1\obj\Debug\net6.0\ref\Semana_1.dll
