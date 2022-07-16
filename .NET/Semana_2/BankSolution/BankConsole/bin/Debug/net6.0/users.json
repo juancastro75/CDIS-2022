@@ -1,0 +1,18 @@
+[
+  {
+    "Department": null,
+    "ID": 1,
+    "Name": "James",
+    "Email": "james@gmail.com",
+    "Balance": 4080.0,
+    "RegisterDate": "2022-07-15T14:54:10.5551989-05:00"
+  },
+  {
+    "Department": "TI",
+    "ID": 3,
+    "Name": "Juan",
+    "Email": "juan.castrors07@gmail.com",
+    "Balance": 10500.5,
+    "RegisterDate": "2022-07-16T00:31:27.3154796-05:00"
+  }
+]
