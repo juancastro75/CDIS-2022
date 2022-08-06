@@ -36,9 +36,21 @@ public class AccountController : ControllerBase
     [HttpPost]
     public IActionResult Create([FromBody] AccountsModel account)
     {
-        var newClient = accountService.Create(account); 
+        bool clientExisting = false;
+        var id = account.ClientId;
 
-        return CreatedAtAction(nameof(GetById), new {id = account.Id}, account);
+        if(accountService.GetClientId(id) is null)
+            clientExisting = false;
+        else
+            clientExisting = true;
+        
+        if(clientExisting)
+        {
+            var newAccount = accountService.Create(account); 
+            return CreatedAtAction(nameof(GetById), new {id = newAccount.Id}, account);
+        }
+        else
+            return BadRequest();
     }
 
     [HttpPut("{id}")]
@@ -50,8 +62,15 @@ public class AccountController : ControllerBase
         var accountToUpdate = accountService.GetById(id);
         if(accountToUpdate is not null)
         {
-            accountService.Update(id, account);
-            return NoContent();
+            if(accountService.GetClientId(id) is null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                accountService.Update(id, account);
+                return NoContent();
+            }
         }
         else
         {

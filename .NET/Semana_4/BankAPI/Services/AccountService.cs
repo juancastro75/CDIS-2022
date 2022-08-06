@@ -57,4 +57,9 @@ public class AccountService
             _context.SaveChanges();
         }
     }
+
+    public Client? GetClientId(int id)
+    {
+        return _context.Clients.Find(id);
+    }
 }
