@@ -28,5 +28,4 @@ EXEC InsertBankTransaction @AccountID = 2, @TransactionType = 2, @Amount = 2000;
 SELECT * FROM Account;
 
 -- Generamos un full backup de la base de datos Bank
-
-BACKUP DATABASE Bank to DISK = 'C:\Users\juanc\OneDrive\Documentos\CDIS-2022\.NET\Semana_3\bank22072022.bak'
+BACKUP DATABASE Bank TO DISK = 'C:\Users\juanc\OneDrive\Documentos\CDIS-2022\.NET\Semana_3\bank22072022.bak' WITH INIT;
