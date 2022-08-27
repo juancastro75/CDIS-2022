@@ -1,9 +1,9 @@
 
-namespace BankAPI.Data.BankModels
+namespace BankAPI.Data.DTOs
 {
-    public class AccountsModel
+    public class AccountDTO
     {
-        public AccountsModel()
+        public AccountDTO()
         {
 
         }
@@ -12,6 +12,5 @@ namespace BankAPI.Data.BankModels
         public int AccountType { get; set; }
         public int ClientId { get; set; }
         public decimal Balence { get; set; }
-        public DateTime RegDate { get; set; }
     }
 }

@@ -17,61 +17,65 @@ public class ClientController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<Client> Get()
+    public async Task<IEnumerable<Client>> Get()
     {
-        return clientService.GetAll();
+        return await clientService.GetAll();
     }
 
     [HttpGet("{id}")]
-    public ActionResult<Client> GetById(int id)
+    public async Task<ActionResult<Client>> GetById(int id)
     {
-        var client = clientService.GetById(id);
+        var client = await clientService.GetById(id);
 
         if(client is null)
-            return NotFound();
+            return ClientNotFound(id);
 
         return client;
     }
 
     [HttpPost]
-    public IActionResult Create(Client client)
+    public async Task<IActionResult> Create(Client client)
     {
-        var newClient = clientService.Create(client); 
+        var newClient = await clientService.Create(client); 
 
         return CreatedAtAction(nameof(GetById), new {id = client.Id}, client);
     }
 
     [HttpPut("{id}")]
-    public IActionResult Update(int id, Client client)
+    public async Task<IActionResult> Update(int id, Client client)
     {
         if (id != client.Id)
-            return BadRequest();
+            return BadRequest( new { message = $"El ID({id}) de la URL no coincide con el ID({client.Id}) del cuerpo de la solicitud."});
         
-        var clientToUpdate = clientService.GetById(id);
+        var clientToUpdate = await clientService.GetById(id);
         if(clientToUpdate is not null)
         {
-            clientService.Update(id, client);
+            await clientService.Update(id, client);
             return NoContent();
         }
         else
         {
-            return NotFound();
+            return ClientNotFound(id);
         }
     }
 
     [HttpDelete("{id}")]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        var clientToDelete = clientService.GetById(id);
+        var clientToDelete = await clientService.GetById(id);
         if(clientToDelete is not null)
         {
-            clientService.Delete(id);
+            await clientService.Delete(id);
             return NoContent();
         }
         else
         {
-            return NotFound();
+            return ClientNotFound(id);
         }
     }
 
+    public NotFoundObjectResult ClientNotFound(int id)
+    {
+        return NotFound(new { message = $"El cliente con ID = {id} no existe."});
+    }
 }

@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using BankAPI.Data;
 using BankAPI.Data.BankModels;
+using BankAPI.Data.DTOs;
 
 namespace BankAPI.Services;
 
@@ -12,49 +14,52 @@ public class AccountService
         _context = context;
     }
 
-    public IEnumerable<Account> GetAll()
+    public async Task<IEnumerable<Account>> GetAll()
     {
-        return _context.Accounts.ToList();
+        return await _context.Accounts.ToListAsync();
     }
 
-    public Account? GetById(int id)
+    public async Task<Account?> GetById(int id)
     {
-        return _context.Accounts.Find(id);
+        return await _context.Accounts.FindAsync(id);
     }
 
-    public AccountsModel Create(AccountsModel newAccount)
+    public async Task<Account> Create(AccountDTO newAccountDTO)
     {
-        var newAccountRegister = new Account();
+        var newAccount = new Account();
+        
+        newAccount.AccountType = newAccountDTO.AccountType;
+        newAccount.ClientId = newAccountDTO.ClientId;
+        newAccount.Balence = newAccountDTO.Balence; 
 
-        newAccountRegister.AccountType = newAccount.AccountType;
-        newAccountRegister.ClientId = newAccount.ClientId;
-        newAccountRegister.Balence = newAccount.Balence;
-        _context.Accounts.Add(newAccountRegister);
-        _context.SaveChanges();
+        _context.Accounts.Add(newAccount);
+        await _context.SaveChangesAsync();
 
         return newAccount;
     }
 
-    public void Update(int id, AccountsModel account)
+    public async Task Update(Account account)
     {
-        var currentAccout = GetById(id);
+        var existingAccount = await GetById(account.Id);
 
-        currentAccout.AccountType = account.AccountType;
-        currentAccout.ClientId = account.ClientId;
-        currentAccout.Balence = account.Balence;
-        
-        _context.Accounts.Update(currentAccout);
-        _context.SaveChanges();
+        if(existingAccount is not null)
+        {
+            existingAccount.AccountType = account.AccountType;
+            existingAccount.ClientId = account.ClientId;
+            existingAccount.Balence = account.Balence;
+
+            await _context.SaveChangesAsync();
+        }
     }
 
-    public void Delete(int id)
+    public async Task Delete(int id)
     {
-        var accountToDelete = GetById(id);
+        var accountToDelete = await GetById(id);
 
         if(accountToDelete is not null)
         {
             _context.Accounts.Remove(accountToDelete);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 
